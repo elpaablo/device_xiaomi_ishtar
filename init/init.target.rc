@@ -283,7 +283,7 @@ on post-fs-data
     chmod 0664 /sys/class/leds/led:switch_2/trigger
     chmod 0664 /sys/class/leds/led:switch_3/trigger
     chmod 0664 /sys/class/leds/flashlight/brightness
-    
+
     #QCC mode configuration
     setprop vendor.qti.qcc.oper.mode 3
 
@@ -566,3 +566,9 @@ service fan_control_turn_off /vendor/bin/fan_service 0
     disabled
     oneshot
 
+service citsensor-hal-2-0 /odm/bin/hw/vendor.xiaomi.sensor.citsensorservice@2.0-service
+    class late_start
+    user system
+    group system input
+    override
+    task_profiles ServiceCapacityLow
