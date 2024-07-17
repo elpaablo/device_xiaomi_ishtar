@@ -115,7 +115,12 @@ TARGET_HAS_GENERIC_KERNEL_HEADERS := true
 BOARD_KERNEL_CMDLINE := androidboot.selinux=permissive
 
 # Kernel Modules
-BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD += fts_touch_spi.ko
+device_second_stage_modules := \
+    fts_touch_spi.ko \
+    xiaomi_touch.ko
+
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD += $(device_second_stage_modules)
+BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD += $(device_second_stage_modules)
 
 # Lineage Health
 TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_BYPASS := false
