@@ -10,7 +10,6 @@ import android.app.Fragment;
 import android.os.Bundle;
 
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
-import com.android.settingslib.widget.R;
 
 public class EdgeSuppressionSettingsActivity extends CollapsingToolbarBaseActivity {
 
@@ -21,11 +20,13 @@ public class EdgeSuppressionSettingsActivity extends CollapsingToolbarBaseActivi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Fragment fragment = getFragmentManager().findFragmentById(R.id.content_frame);
+        Fragment fragment = getFragmentManager().findFragmentById(
+                com.android.settingslib.collapsingtoolbar.R.id.content_frame);
         if (fragment == null) {
             mEdgeSuppressionSettingsFragment = new EdgeSuppressionSettingsFragment();
             getFragmentManager().beginTransaction()
-                .add(R.id.content_frame, mEdgeSuppressionSettingsFragment, TAG)
+                .add(com.android.settingslib.collapsingtoolbar.R.id.content_frame,
+                        mEdgeSuppressionSettingsFragment, TAG)
                 .commit();
         } else {
             mEdgeSuppressionSettingsFragment = (EdgeSuppressionSettingsFragment) fragment;
